@@ -1,0 +1,1 @@
+export const baseUrl = "https://reminiscent-screeching-twill.glitch.me/users";

@@ -1,0 +1,37 @@
+#form{
+    width: 30%;
+    margin: 3rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: yellow;
+    padding: 10px;
+    text-align: center;
+}
+
+#form input{
+    height: 20px;
+}
+
+select{
+    height: 30px;
+    background-color: yellow;
+}
+
+#submit{
+    width: 13rem;
+    height: 3rem;
+    background-color: black ;
+    color: yellow;
+    height: 2rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: auto;
+}
+
+#submit:hover{
+    color: grey;
+    transition: coloe 1s ease;
+}

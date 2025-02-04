@@ -4,12 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/index.css">
+    <link rel="stylesheet" href="./style/signup.css">
     <title>Document</title>
 </head>
 <body>
     <div id="nav"></div>
+    <form id="form" action="" >
+        <h3>please signup.....</h3>
+        <input id="name" type="text" placeholder="name">
+        <input id="email" type="email" placeholder="Email">
+        <input id="password" type="password" placeholder="password">
+        <input id="number"  type="number" placeholder="number">
+        <select id="gender">
+            <option value="select gender">select gender</option>
+            <option value="male">male</option>
+            <option value="female">female</option>
+            <option value="other">other</option>
+        </select>
+        <input id="submit" type="submit" value="signup">
+    </form>
     <div id ="footer"></div>
 </body>
 <script src="./script/footer.js"></script>
 <script src="./script/navbar.js" type="module"></script>
+<script src="./script/signup.js" type="module"></script>
 </html>
