@@ -15,6 +15,7 @@ form.addEventListener("submit",function(){
         if (user.length != 0){
             if(user[0].password == password){
                 alert("login sucess...")
+                localStorage.setItem("addData",JSON.stringify(user[0]))
                 window.location.href = "todo.html"
 
             }else{

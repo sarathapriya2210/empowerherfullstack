@@ -1,0 +1,17 @@
+#logout{
+    padding: 10px;
+    height: 3rem;
+    background-color: black ;
+    color: yellow;
+    height: 2rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: auto;
+}
+
+#logout:hover{
+    color: grey;
+    transition: coloe 1s ease;
+}
