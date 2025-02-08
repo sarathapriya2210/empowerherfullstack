@@ -1,4 +1,4 @@
-import { baseUrl } from "./baseUrl.js";
+import { baseUrl } from "./baseUrl.js"
 
 let form = document.getElementById("form")
 form.addEventListener("submit",function(){
@@ -34,7 +34,7 @@ form.addEventListener("submit",function(){
     })
     .catch((err)=>{
           console.log(err);
-          alert("something went wrong")
+          alert("something went wrong in signup")
     })
 
 })

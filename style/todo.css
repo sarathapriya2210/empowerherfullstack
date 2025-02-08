@@ -1,4 +1,4 @@
-#logout{
+#logout, #btn-sub{
     padding: 10px;
     height: 3rem;
     background-color: black ;
@@ -9,9 +9,39 @@
     font-size: 1rem;
     font-weight: 500;
     margin: auto;
+    float: right;
+    
 }
 
-#logout:hover{
+#logout:hover ,#btn-sun:hover{
     color: grey;
     transition: coloe 1s ease;
+}
+
+#user-name ,h2{
+    color: rgb(94, 94, 26);
+    font-size: 1.5rem;
+    text-align: center;
+    
+}
+
+#user-data{
+    float: right;
+    gap:1rem;
+    margin-right: 60px;
+}
+
+#add-todo{
+    width: 30%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+form{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap : 10px;
+    justify-content: center;
+    align-items: center;
 }

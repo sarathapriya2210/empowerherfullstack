@@ -29,7 +29,7 @@ form.addEventListener("submit",function(){
     })
     .catch((err)=>{
           console.log(err);
-          alert("something went wrong")
+          alert("something went wrong in login page")
     })
 
 })

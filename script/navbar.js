@@ -7,6 +7,7 @@ const navbar = ()=>{
             <a href="login.html">login</a>
             <a href="todo.html">todo</a>
             <a href="expenses.html">expences</a>
+            
         </div>
     </div>`;
 
