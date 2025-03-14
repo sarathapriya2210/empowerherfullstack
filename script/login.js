@@ -8,7 +8,7 @@ form.addEventListener("submit",function(){
     let password = form.password.value;
    
 
-   fetch(`${baseUrl}`)
+   fetch(`${baseUrl}/users`)
     .then((res)=>res.json())
     .then((data)=>{
         let user = data.filter((el,i)=>el.email==email)

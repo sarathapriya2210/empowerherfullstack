@@ -2,7 +2,7 @@ import { baseUrl } from "./baseUrl.js";
 
 document.getElementById("logout").addEventListener("click", function () {
     localStorage.removeItem(addData)
-    alert("redirecting to the momr page")
+    alert("redirecting to the more page")
     window.location.href = "index.html"
 
 })
@@ -32,7 +32,7 @@ form.addEventListener("submit", function(){
     
     //push this to json server
 
-    fetch(`${baseUrl}/todo`,{
+    fetch(`${baseUrl}/todos`,{
         method:"POST",
         headers:{
             "content-type": "application/json"
@@ -40,6 +40,7 @@ form.addEventListener("submit", function(){
         body: JSON.stringify(todoObj)
     }).then(()=>{
         alert("todo is added....")
+        loadData()
     }).catch((err)=>{
       alert("something went wrong")
       console.log(err)
@@ -49,9 +50,10 @@ form.addEventListener("submit", function(){
 
 async function getTodo() {
    try{
-       let res = await fetch(`${baseUrl}/todo`);
-       let body = await res.json();
-       return body 
+       let res = await fetch(`${baseUrl}/todos`);
+       let data = await res.json();
+       let userTodos = data.filter((el,i)=>el.userId == addData.id)
+       return userTodos;
    }catch(err){
     console.log(err)
     alert("something went wrong in getting todo")
@@ -72,14 +74,30 @@ function displayTodo(arr){
 
     let deadline = document.createElement("h5")
     deadline.textContent = `Deadline: ${el.deadline}`;
-
+    
+    let d= new Date(el.deadline)
+    if(d<Date.now() && el.status==false){
+       card.classList.add("pending")
+    }
     let priority = document.createElement("h5");
     priority.textContent = `Title: ${el.priority}`;
 
     let status = document.createElement("h5");
     status.textContent = el.status==true? "completed" :"pending";
-
-    card.append(title , priority , deadline , status);
+    
+    let updateSatusButton = document.createElement("button");
+    updateSatusButton.textContent = "toggle button";
+    updateSatusButton.addEventListener("click",function(){
+      updateStatusfn(el,i)
+      //console.log(event)
+    })
+    let deleteTodoButton = document.createElement("button");
+    deleteTodoButton.textContent = "delete button";
+    deleteTodoButton.addEventListener("click",function(){
+      deleteTodoFn(el,i)
+      //console.log(event)
+    })
+    card.append(title , priority , deadline , status , updateSatusButton, deleteTodoButton);
     cont.append(card)
 
   });
@@ -89,4 +107,48 @@ window.onload = async ()=>{
     let arr = await getTodo()
     displayTodo(arr)
 }
+
+async function loadData(){
+    let arr = await getTodo()
+    displayTodo(arr)
+}
+function updateStatusfn(el,i){
+    //console.log("before ,", el);
+
+    let updateTodo = {...el , status: ! el.status};
+    //console.log( "after :", updateTodo);
+    let todoId = el.id;
+    fetch(`${baseUrl}/todos/${todoId}`,{
+        method : "PATCH",
+        headers : {
+            "content-type":" application/json"
+        },
+        body: JSON.stringify(updateTodo)
+        }).then(()=>{
+            alert("todo updated....")
+            //to reload the page to get updated todo
+            //window.location.reload()
+            // display loadDATA arrzay
+            loadData()
+        }).catch((err)=>{
+            alert("something went wrong in todo updation")
+            console.log(err)
+        })
+}
     
+function deleteTodoFn(el,i){
+    let todoId = el.id;
+    fetch(`${baseUrl}/todos/${todoId}`,{
+        method : "DELETE"
+        }).then(()=>{
+            alert("todo detleted....")
+            //to reload the page to get updated todo
+            //window.location.reload()
+            // display loadDATA arrzay
+            loadData()
+        }).catch((err)=>{
+            alert("something went wrong in todo deletion")
+            console.log(err)
+        })
+
+}

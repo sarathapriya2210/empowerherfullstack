@@ -10,7 +10,7 @@ form.addEventListener("submit",function(){
     let number = form.number.value;
     let userObj = {name, email , password, gender, number};
 
-   fetch(`${baseUrl}`)
+   fetch(`${baseUrl}/users`)
     .then((res)=>res.json())
     .then((data)=>{
         let user = data.filter((el,i)=>el.email==email)
@@ -19,7 +19,7 @@ form.addEventListener("submit",function(){
             window.location.href = "login.html"
         }
         else{
-            fetch(`${baseUrl}`,{
+            fetch(`${baseUrl}/users`,{
                 method : "POST",
                 headers:{
                     "content-type":"application/json",
@@ -31,9 +31,8 @@ form.addEventListener("submit",function(){
             })
            
         }
-    })
-    .catch((err)=>{
-          console.log(err);
+    }).catch((err)=>{
+          console.log(err)
           alert("something went wrong in signup")
     })
 
