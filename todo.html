@@ -14,23 +14,25 @@
               <h4 id="user-name"></h4>
               <button  id="logout">logout</button>
         </div>
-        
-   
+   <button id="add_todo_btn"> ADD TODO</button>
     <div id="add-todo">
-        <h2>Add Todo</h2>
-        <form id="form" action="">
-            <label for="title">Enter the task</label>
-            <input id="title" type="text" placeholder="Enter title">
-            <label for="deadline">Select Deadline</label>
-            <input id="deadline" type="date">
-            <label for="priority">Select priority</label>
-            <select id="priority">
-                <option value="high">high</option>
-                <option value="medium">medium</option>
-                <option value="low">low</option>
-            </select>
-            <input id="btn-sub"  type="submit" value="Add todo">
-        </form>
+        <div>
+            <h2>Add Todo</h2>
+            <h3 id="close_modal"><span>&times;</span></h3>
+            <form id="form" action="">
+                <label for="title">Enter the task</label>
+                <input id="title" type="text" placeholder="Enter title">
+                <label for="deadline">Select Deadline</label>
+                <input id="deadline" type="date">
+                <label for="priority">Select priority</label>
+                <select id="priority">
+                    <option value="high">high</option>
+                    <option value="medium">medium</option>
+                    <option value="low">low</option>
+                </select>
+                <input id="btn-sub"  type="submit" value="Add todo">
+            </form>
+        </div>
 
     </div>
     <div id="todo-container"></div>

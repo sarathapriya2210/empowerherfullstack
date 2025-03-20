@@ -1,5 +1,13 @@
 import { baseUrl } from "./baseUrl.js";
 
+let addtododiv = document.getElementById("add-todo")
+document.getElementById("add_todo_btn").addEventListener("click",function(){
+   addtododiv.style.display="flex";
+})
+document.getElementById("close_modal").addEventListener("click",function(){
+   addtododiv.style.display="none" ;
+})  
+
 document.getElementById("logout").addEventListener("click", function () {
     localStorage.removeItem(addData)
     alert("redirecting to the more page")
@@ -41,6 +49,7 @@ form.addEventListener("submit", function(){
     }).then(()=>{
         alert("todo is added....")
         loadData()
+        addtododiv.style.display="none";
     }).catch((err)=>{
       alert("something went wrong")
       console.log(err)
@@ -91,13 +100,20 @@ function displayTodo(arr){
       updateStatusfn(el,i)
       //console.log(event)
     })
+
+    let editTodobutton = document.createElement("button");
+    editTodobutton.textContent = "Edit button";
+    editTodobutton.addEventListener("click",function(){
+      editTodofn(el,i) 
+      //console.log(event)
+    })
     let deleteTodoButton = document.createElement("button");
     deleteTodoButton.textContent = "delete button";
     deleteTodoButton.addEventListener("click",function(){
       deleteTodoFn(el,i)
       //console.log(event)
     })
-    card.append(title , priority , deadline , status , updateSatusButton, deleteTodoButton);
+    card.append(title , priority , deadline , status , updateSatusButton, editTodobutton ,deleteTodoButton);
     cont.append(card)
 
   });
